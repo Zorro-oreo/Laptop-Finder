@@ -6,12 +6,103 @@
   <title>Laptops | Student Laptop Finder</title>
   <link rel="stylesheet" href="dist/output.css">
 </head>
-<body>
-  <!-- TODO: header (logo, nav + mobile toggle, theme switch) -->
-  <main>
-    <!-- TODO: laptops page content (laptop content is rendered by JS, not hard-coded) -->
+<body class="min-h-screen flex flex-col bg-page text-ink transition-colors">
+
+  <header class="sticky top-0 z-20 bg-surface shadow-sm">
+    <nav class="mx-auto max-w-6xl flex flex-wrap items-center justify-between gap-3 px-4 py-3">
+      <a href="index.html" class="text-xl font-bold text-accent">Laptop<span class="text-ink">Finder</span></a>
+      <div class="contents md:flex md:flex-row-reverse md:items-center md:gap-6">
+        <div class="flex items-center gap-2">
+          <button id="theme-toggle" type="button" class="btn-action text-sm" aria-label="Switch theme">
+            Battery Saver
+          </button>
+  
+          <button id="nav-toggle" type="button" class="md:hidden rounded-lg border border-ink/20 px-3 py-2 transition hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent" aria-controls="nav-menu" aria-expanded="false" aria-label="Open menu">
+            &#9776;
+          </button>
+        </div>
+  
+        <ul id="nav-menu" class="hidden w-full flex-col gap-1 md:flex md:w-auto md:flex-row md:gap-6">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="laptops.html" class="nav-link font-semibold text-accent" aria-current="page">Laptops</a></li>
+          <li><a href="favorites.html" class="nav-link">Favorites</a></li>
+          <li><a href="compare.html" class="nav-link">Compare</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="mx-auto w-full max-w-6xl flex-1 px-4 py-8 md:py-12">
+    <h1 class="text-2xl font-extrabold sm:text-3xl">Laptop catalogue</h1>
+    <p class="mt-1 text-ink/70">Search, filter and sort to find the right laptop.</p>
+
+    <form id="filters" class="laptop-card mt-6 grid grid-cols-1 gap-4 hover:translate-y-0 sm:grid-cols-2 lg:grid-cols-5" role="search">
+      <label class="flex flex-col gap-1 text-sm font-medium lg:col-span-2">
+        Search
+        <input id="search" type="search" placeholder="Name or brand, e.g. Lenovo" class="form-control" autocomplete="off">
+      </label>
+
+      <label class="flex flex-col gap-1 text-sm font-medium">
+        Category
+        <select id="category" class="form-control">
+          <option value="all">All categories</option>
+          <option value="ultrabook">Ultrabook</option>
+          <option value="gaming">Gaming</option>
+          <option value="2-in-1">2-in-1</option>
+          <option value="creator">Creator</option>
+          <option value="budget">Budget</option>
+        </select>
+      </label>
+
+      <label class="flex flex-col gap-1 text-sm font-medium">
+        Minimum RAM
+        <select id="min-ram" class="form-control">
+          <option value="0">Any</option>
+          <option value="8">8 GB+</option>
+          <option value="16">16 GB+</option>
+          <option value="32">32 GB+</option>
+          <option value="64">64 GB+</option>
+        </select>
+      </label>
+
+      <label class="flex flex-col gap-1 text-sm font-medium">
+        Sort by
+        <select id="sort" class="form-control">
+          <option value="default">Featured</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="battery-desc">Battery: longest first</option>
+          <option value="battery-asc">Battery: shortest first</option>
+          <option value="weight-asc">Weight: lightest first</option>
+          <option value="weight-desc">Weight: heaviest first</option>
+        </select>
+      </label>
+
+      <label class="flex flex-col gap-1 text-sm font-medium sm:col-span-2 lg:col-span-4">
+        <span>Maximum price: <output id="max-price-value" for="max-price" class="font-bold text-accent"></output></span>
+        <input id="max-price" type="range" min="20000" max="150000" step="5000" value="150000" class="accent-accent">
+      </label>
+
+      <div class="flex items-end">
+        <button id="reset-filters" type="reset" class="w-full rounded-lg border border-accent px-4 py-2 text-accent transition hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent">
+          Reset filters
+        </button>
+      </div>
+    </form>
+
+    <p id="result-count" class="mt-6 text-sm text-ink/70" aria-live="polite">Loading laptops…</p>
+    <p id="laptops-error" class="hidden mt-4 rounded-lg bg-red-100 p-3 text-red-700"></p>
+    <p id="no-results" class="hidden mt-4 rounded-lg bg-surface p-6 text-center text-ink/70">
+      No laptops match your filters. Try a higher price or a different category.
+    </p>
+
+    <div id="laptop-grid" class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
   </main>
-  <!-- TODO: footer -->
+
+  <footer class="bg-surface py-6 text-center text-sm text-ink/60">
+    <p>Student Laptop Finder · SW302 Assignment 2 · Youssef Amgad Abdelrahman</p>
+  </footer>
+
   <script type="module" src="src/js/laptops.js"></script>
 </body>
 </html>

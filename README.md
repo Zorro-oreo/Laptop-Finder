@@ -3,7 +3,7 @@
 SW302 – User Interface Development, Assignment 2 (JavaScript & Tailwind CSS 4)
 Author: Youssef Amgad Abdelrahman
 
-GitHub repo: <add link>
+GitHub repo: (https://github.com/Zorro-oreo/Laptop-Finder)
 
 ## Install
 ```bash
