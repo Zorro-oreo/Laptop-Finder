@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+/* TODO: @plugin "@tailwindcss/forms"; */
+/* TODO: @theme — Performance Mode (dark + orange) and Battery Saver Mode (light + green) colors */
+/* TODO: @layer components — .laptop-card, .btn-action, ... with @apply */
