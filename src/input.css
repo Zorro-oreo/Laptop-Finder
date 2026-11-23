@@ -22,6 +22,6 @@
 @layer components {
   .laptop-card { @apply bg-surface text-ink rounded-xl p-4 shadow transition hover:-translate-y-1 hover:shadow-lg; }
   .btn-action  { @apply bg-accent text-white rounded-lg px-4 py-2 transition hover:opacity-90 focus:ring-2 focus:ring-accent; }
-  .nav-link { @apply block rounded-lg px-3 py-2 transition hover:text-accent hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent md:p-0 md:hover:bg-transparent; }
+  .nav-link { @apply block rounded-lg px-3 py-2 transition hover:text-accent hover:bg-accent/10 focus:outline-none max-md:focus:ring-2 max-md:focus:ring-accent md:p-0 md:hover:bg-transparent; }
   .form-control { @apply rounded-lg border-ink/20 bg-page text-ink placeholder:text-ink/40 transition focus:border-accent focus:ring-accent; }
 }

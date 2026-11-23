@@ -6,12 +6,64 @@
   <title>Compare | Student Laptop Finder</title>
   <link rel="stylesheet" href="dist/output.css">
 </head>
-<body>
-  <!-- TODO: header (logo, nav + mobile toggle, theme switch) -->
-  <main>
-    <!-- TODO: compare page content (laptop content is rendered by JS, not hard-coded) -->
+<body class="min-h-screen flex flex-col bg-page text-ink transition-colors">
+
+  <header class="sticky top-0 z-20 bg-surface shadow-sm">
+    <nav class="mx-auto max-w-6xl flex flex-wrap items-center justify-between gap-3 px-4 py-3">
+      <a href="index.html" class="text-xl font-bold text-accent">Laptop<span class="text-ink">Finder</span></a>
+      <div class="contents md:flex md:flex-row-reverse md:items-center md:gap-6">
+        <div class="flex items-center gap-2">
+          <button id="theme-toggle" type="button" class="btn-action text-sm" aria-label="Switch theme">
+            Battery Saver
+          </button>
+  
+          <button id="nav-toggle" type="button" class="md:hidden rounded-lg border border-ink/20 px-3 py-2 transition hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent" aria-controls="nav-menu" aria-expanded="false" aria-label="Open menu">
+            &#9776;
+          </button>
+        </div>
+  
+        <ul id="nav-menu" class="hidden w-full flex-col gap-1 md:flex md:w-auto md:flex-row md:gap-6">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="laptops.html" class="nav-link">Laptops</a></li>
+          <li><a href="favorites.html" class="nav-link">Favorites</a></li>
+          <li><a href="compare.html" class="nav-link font-semibold text-accent" aria-current="page">Compare</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="mx-auto w-full max-w-6xl flex-1 px-4 py-8 md:py-12">
+    <h1 class="text-2xl font-extrabold sm:text-3xl">Compare laptops</h1>
+    <p class="mt-1 text-ink/70">Pick 2 to 4 of your favorites. The best value in each row is highlighted.</p>
+
+    <p id="compare-error" class="hidden mt-6 rounded-lg bg-red-100 p-3 text-red-700"></p>
+
+    <div id="compare-empty" class="hidden mt-8 laptop-card text-center hover:translate-y-0">
+      <p class="text-lg font-semibold">You need at least two favorites to compare.</p>
+      <p class="mt-1 text-ink/70">Save laptops from the catalogue or a details page, then come back here.</p>
+      <a href="laptops.html" class="btn-action mt-4 inline-block">Browse laptops</a>
+    </div>
+
+    <section id="picker-section" class="mt-6 laptop-card hover:translate-y-0" aria-labelledby="picker-title">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <h2 id="picker-title" class="text-lg font-bold">Your favorites</h2>
+        <p id="selected-count" class="text-sm text-ink/70" aria-live="polite"></p>
+      </div>
+      <div id="picker" class="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4"></div>
+      <p id="compare-msg" class="mt-3 hidden rounded-lg bg-accent/15 p-3 text-sm font-medium text-accent" role="status"></p>
+    </section>
+
+    <section class="mt-8" aria-labelledby="table-title">
+      <h2 id="table-title" class="sr-only">Comparison table</h2>
+      <p id="compare-hint" class="hidden laptop-card text-center text-ink/70 hover:translate-y-0">Select at least two laptops to see them side by side.</p>
+      <div id="compare-table-wrap" class="laptop-card overflow-x-auto p-0 hover:translate-y-0"></div>
+    </section>
   </main>
-  <!-- TODO: footer -->
+
+  <footer class="bg-surface py-6 text-center text-sm text-ink/60">
+    <p>Student Laptop Finder · SW302 Assignment 2 · Youssef Amgad Abdelrahman</p>
+  </footer>
+
   <script type="module" src="src/js/compare-page.js"></script>
 </body>
 </html>
