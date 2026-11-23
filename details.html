@@ -6,12 +6,47 @@
   <title>Laptop Details | Student Laptop Finder</title>
   <link rel="stylesheet" href="dist/output.css">
 </head>
-<body>
-  <!-- TODO: header (logo, nav + mobile toggle, theme switch) -->
-  <main>
-    <!-- TODO: details page content (laptop content is rendered by JS, not hard-coded) -->
+<body class="min-h-screen flex flex-col bg-page text-ink transition-colors">
+
+  <header class="sticky top-0 z-20 bg-surface shadow-sm">
+    <nav class="mx-auto max-w-6xl flex flex-wrap items-center justify-between gap-3 px-4 py-3">
+      <a href="index.html" class="text-xl font-bold text-accent">Laptop<span class="text-ink">Finder</span></a>
+      <div class="contents md:flex md:flex-row-reverse md:items-center md:gap-6">
+        <div class="flex items-center gap-2">
+          <button id="theme-toggle" type="button" class="btn-action text-sm" aria-label="Switch theme">
+            Battery Saver
+          </button>
+  
+          <button id="nav-toggle" type="button" class="md:hidden rounded-lg border border-ink/20 px-3 py-2 transition hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent" aria-controls="nav-menu" aria-expanded="false" aria-label="Open menu">
+            &#9776;
+          </button>
+        </div>
+  
+        <ul id="nav-menu" class="hidden w-full flex-col gap-1 md:flex md:w-auto md:flex-row md:gap-6">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="laptops.html" class="nav-link font-semibold text-accent">Laptops</a></li>
+          <li><a href="favorites.html" class="nav-link">Favorites</a></li>
+          <li><a href="compare.html" class="nav-link">Compare</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="mx-auto w-full max-w-6xl flex-1 px-4 py-8 md:py-12">
+    <a href="laptops.html" class="inline-block text-sm text-accent transition hover:underline focus:outline-none focus:ring-2 focus:ring-accent">&larr; Back to catalogue</a>
+
+    <div id="details-error" class="hidden mt-6 laptop-card text-center hover:translate-y-0">
+      <p id="details-error-text" class="text-lg"></p>
+      <a href="laptops.html" class="btn-action mt-4 inline-block">Browse all laptops</a>
+    </div>
+
+    <div id="details" class="mt-6"></div>
   </main>
-  <!-- TODO: footer -->
+
+  <footer class="bg-surface py-6 text-center text-sm text-ink/60">
+    <p>Student Laptop Finder · SW302 Assignment 2 · Youssef Amgad Abdelrahman</p>
+  </footer>
+
   <script type="module" src="src/js/details.js"></script>
 </body>
 </html>

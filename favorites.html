@@ -6,12 +6,76 @@
   <title>Favorites | Student Laptop Finder</title>
   <link rel="stylesheet" href="dist/output.css">
 </head>
-<body>
-  <!-- TODO: header (logo, nav + mobile toggle, theme switch) -->
-  <main>
-    <!-- TODO: favorites page content (laptop content is rendered by JS, not hard-coded) -->
+<body class="min-h-screen flex flex-col bg-page text-ink transition-colors">
+
+  <header class="sticky top-0 z-20 bg-surface shadow-sm">
+    <nav class="mx-auto max-w-6xl flex flex-wrap items-center justify-between gap-3 px-4 py-3">
+      <a href="index.html" class="text-xl font-bold text-accent">Laptop<span class="text-ink">Finder</span></a>
+      <div class="contents md:flex md:flex-row-reverse md:items-center md:gap-6">
+        <div class="flex items-center gap-2">
+          <button id="theme-toggle" type="button" class="btn-action text-sm" aria-label="Switch theme">
+            Battery Saver
+          </button>
+  
+          <button id="nav-toggle" type="button" class="md:hidden rounded-lg border border-ink/20 px-3 py-2 transition hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent" aria-controls="nav-menu" aria-expanded="false" aria-label="Open menu">
+            &#9776;
+          </button>
+        </div>
+  
+        <ul id="nav-menu" class="hidden w-full flex-col gap-1 md:flex md:w-auto md:flex-row md:gap-6">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="laptops.html" class="nav-link">Laptops</a></li>
+          <li><a href="favorites.html" class="nav-link font-semibold text-accent" aria-current="page">Favorites</a></li>
+          <li><a href="compare.html" class="nav-link">Compare</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="mx-auto w-full max-w-6xl flex-1 px-4 py-8 md:py-12">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <h1 class="text-2xl font-extrabold sm:text-3xl">Your favorites</h1>
+        <p class="mt-1 text-ink/70">Laptops you saved. They stay here after you reload or close the page.</p>
+      </div>
+      <div class="flex gap-3">
+        <a href="compare.html" class="btn-action">Compare favorites</a>
+        <button id="clear-favorites" type="button" class="rounded-lg border border-red-500 px-4 py-2 text-red-500 transition hover:bg-red-500/10 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:cursor-not-allowed disabled:opacity-40">
+          Clear all
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <div class="laptop-card text-center hover:translate-y-0">
+        <p class="text-sm text-ink/60">Saved laptops</p>
+        <p id="fav-count" class="mt-1 text-2xl font-bold text-accent">—</p>
+      </div>
+      <div class="laptop-card text-center hover:translate-y-0">
+        <p class="text-sm text-ink/60">Total price</p>
+        <p id="fav-total" class="mt-1 text-2xl font-bold text-accent">—</p>
+      </div>
+      <div class="laptop-card text-center hover:translate-y-0">
+        <p class="text-sm text-ink/60">Average price</p>
+        <p id="fav-average" class="mt-1 text-2xl font-bold text-accent">—</p>
+      </div>
+    </div>
+
+    <p id="favorites-error" class="hidden mt-6 rounded-lg bg-red-100 p-3 text-red-700"></p>
+
+    <div id="favorites-empty" class="hidden mt-8 laptop-card text-center hover:translate-y-0">
+      <p class="text-lg font-semibold">You haven't saved any laptops yet.</p>
+      <p class="mt-1 text-ink/70">Tap ♡ Save on any laptop to keep it here.</p>
+      <a href="laptops.html" class="btn-action mt-4 inline-block">Browse laptops</a>
+    </div>
+
+    <div id="favorites-grid" class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
   </main>
-  <!-- TODO: footer -->
+
+  <footer class="bg-surface py-6 text-center text-sm text-ink/60">
+    <p>Student Laptop Finder · SW302 Assignment 2 · Youssef Amgad Abdelrahman</p>
+  </footer>
+
   <script type="module" src="src/js/favorites.js"></script>
 </body>
 </html>
